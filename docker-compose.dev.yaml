@@ -1,0 +1,16 @@
+---
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    command: 'yarn start'
+    stdin_open: true
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
