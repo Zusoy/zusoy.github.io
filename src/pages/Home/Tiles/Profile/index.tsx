@@ -6,7 +6,7 @@ import device from 'app/device'
 const Profile: React.FC = () =>
   <Tile width={ 900 } index={ 3 } duration={ 1 }>
     <ProfileTileContentWrapper>
-      <ProfilePicture src='assets/img/me.jpeg' />
+      <ProfilePicture src='assets/img/me.png' />
       <ProfileText>
         <h2>Who am I ?</h2>
         <hr />
