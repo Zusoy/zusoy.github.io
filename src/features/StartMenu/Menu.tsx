@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuItem from 'features/StartMenu/MenuItem'
+import { MenuItem, LinkMenuItem } from 'features/StartMenu/MenuItem'
 import { TaskManagerContext } from 'app/TaskManager'
 
 type Props = {
@@ -56,6 +56,21 @@ const Menu: React.FC<Props> = ({ opened, onClose }) => {
           label='Resume'
           img='/assets/icons/resume.png'
           onClick={() => launchTask('resume', '/assets/icons/resume.png')}
+        />
+        <LinkMenuItem
+          label='Github'
+          img='/assets/img/socials/github.webp'
+          href='https://github.com/Zusoy'
+        />
+        <LinkMenuItem
+          label='LinkedIn'
+          img='/assets/img/socials/linkedin.webp'
+          href='https://www.linkedin.com/in/gregoire-drapeau/'
+        />
+        <LinkMenuItem
+          label='X'
+          img='/assets/img/socials/x.webp'
+          href='https://x.com/gregoire_drp'
         />
       </div>
     </div>
