@@ -81,7 +81,9 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
           <b>{name}</b>
         </div>
         <div className='flex flex-row items-center justify-between'>
-          <button
+          <div
+            role='button'
+            onClick={() => {}}
             className='
               flex
               text-sm
@@ -101,9 +103,10 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
             <span className='text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]'>
               <b>_</b>
             </span>
-          </button>
-          <button
-            type='button'
+          </div>
+          <div
+            role='button'
+            onClick={() => {}}
             className='
               flex
               text-sm
@@ -121,8 +124,10 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
               active:bg-win-95-silver'
           >
             <b>❒</b>
-          </button>
-          <button
+          </div>
+          <div
+            role='button'
+            onClick={() => {}}
             className='
               flex
               text-sm
@@ -140,7 +145,7 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
               active:bg-win-95-silver'
           >
             <b>X</b>
-          </button>
+          </div>
         </div>
       </div>
       <div className='flex-grow overflow-x-hidden p-0'>

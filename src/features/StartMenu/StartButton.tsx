@@ -6,6 +6,7 @@ type Props = {
 
 const StartButton: React.FC<Props> = ({ onClick }) =>
   <div
+    role='button'
     className='
       w-16
       h-6
@@ -15,6 +16,7 @@ const StartButton: React.FC<Props> = ({ onClick }) =>
       win-95-shadow
       win-95-border
       justify-center
+      cursor-pointer
       bg-win-95-silver
       border-[1.5px]
       active:win-95-border-active
