@@ -2,7 +2,7 @@ import React from 'react'
 import MenuItem from 'features/StartMenu/MenuItem'
 
 type Props = {
-  opened: boolean
+  readonly opened: boolean
 }
 
 const Menu: React.FC<Props> = ({ opened }) =>

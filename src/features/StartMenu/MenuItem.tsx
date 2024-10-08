@@ -1,8 +1,8 @@
 import React from 'react'
 
 type Props = {
-  img: string
-  label: string
+  readonly img: string
+  readonly label: string
 }
 
 const MenuItem: React.FC<Props> = ({ img, label }) =>
