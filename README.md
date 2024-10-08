@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# GRG-DRP 95
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![License][license-shield]][license-url]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+  <h3>Welcome to my portfolio repository</h3>
+  <p align="center">
+    There is my portfolio website repository inspired by Windows 95 design
+  </p>
+  <br />
+</div>
 
-Currently, two official plugins are available:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#features">Features</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-## Expanding the ESLint configuration
+GRG-DRP-95 (from my name Grégoire Drapeau) is my portfolio website.
+From here, you can see my projects, my motivation and my contacts :)
+The website is inspired by win-95 OS design.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<!-- BUILT WITH -->
+### Built With
 
-- Configure the top-level `parserOptions` property like this:
+GRG-DRP-95 is built with :
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+* [![React][React]][React-url]
+* [![Vite][Vite]][Vite-url]
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<!-- FEATURES -->
+### Features
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+The portfolio contains content about me but as well some features inspired by OS WIN-95
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+<!-- CONTACT -->
+## Contact
+
+Project Link: [https://github.com/Zusoy/grgdrp-95](https://github.com/Zusoy/grgdrp-95)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0A66C2
+[linkedin-url]: https://www.linkedin.com/in/gr%C3%A9goire-drapeau-742425123/
+[license-shield]: https://img.shields.io/github/license/zusoy/chatterer.svg?style=for-the-badge
+[license-url]: https://github.com/Zusoy/grgdrp-95/blob/master/LICENSE.txt
+[React]: https://img.shields.io/badge/React-3998B6?style=for-the-badge&logo=react&logoColor=white
+[React-url]: https://react.dev/
+[Vite]: https://img.shields.io/badge/Vite-BA38FF?style=for-the-badge&logo=vite&logoColor=FFD62C
+[Vite-url]: https://vite.dev/
