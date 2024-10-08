@@ -1,10 +1,10 @@
 import React from 'react'
 
 type Props = {
-  children: React.ReactNode
-  name: string
-  icon: string
-  index: number
+  readonly children: React.ReactNode
+  readonly name: string
+  readonly icon: string
+  readonly index: number
 }
 
 type Coords = {

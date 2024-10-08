@@ -1,14 +1,11 @@
 import React from 'react'
-import Window from 'features/Window'
+import Shortcut from 'features/Desktop/Shortcut'
 
 const Desktop: React.FC = () =>
-  <div className='w-full h-[calc(100vh-2.5rem)]'>
-    <Window name='Test' icon='/assets/icons/folder.png' index={1}>
-      <div className='flex w-full h-full bg-[white] overflow-y-scroll'>
-        <div className='flex flex-col'>
-        </div>
-      </div>
-    </Window>
+  <div className='relative w-full h-[calc(100vh-2.5rem)] z-[999]'>
+    <nav className='flex flex-col flex-wrap mt-2 w-0 h-full'>
+      <Shortcut label='Biography' icon='/assets/icons/bio.png' />
+    </nav>
   </div>
 
 export default Desktop

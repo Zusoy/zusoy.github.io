@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-  onClick: React.MouseEventHandler<HTMLDivElement>
+  readonly onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
 const StartButton: React.FC<Props> = ({ onClick }) =>

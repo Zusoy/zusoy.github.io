@@ -8,6 +8,10 @@ body {
   overflow-x: hidden;
 }
 
+.win-95-shortcut-active {
+  filter: grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(400%) contrast(.9);
+}
+
 .win-95-shadow {
   box-shadow: 1.5px 1.5px #000;
 }
