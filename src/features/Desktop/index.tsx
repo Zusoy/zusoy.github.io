@@ -4,9 +4,11 @@ import Shortcut from 'features/Desktop/Shortcut'
 import Launcher from 'app/TaskManager/Launcher'
 
 const Desktop: React.FC = () => {
+  const [activeShortcut, setActiveShortcut] = React.useState<null|string>(null)
   const { dispatch } = React.useContext(TaskManagerContext)
 
   const launchTask = React.useCallback((tag: string, icon: string) => {
+    setActiveShortcut(null)
     dispatch({
       type: 'new_task',
       payload: {
@@ -25,12 +27,16 @@ const Desktop: React.FC = () => {
           label='Biography'
           icon='/assets/icons/bio.png'
           taskTag='biography'
+          active={activeShortcut === 'biography'}
+          onClick={() => setActiveShortcut('biography')}
           onLaunch={launchTask}
         />
         <Shortcut
           label='Resume'
           icon='/assets/icons/resume.png'
           taskTag='resume'
+          active={activeShortcut === 'resume'}
+          onClick={() => setActiveShortcut('resume')}
           onLaunch={launchTask}
         />
       </nav>
