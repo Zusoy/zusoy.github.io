@@ -1,10 +1,17 @@
 import React from 'react'
+import { TaskManagerContext } from 'app/TaskManager'
+import { TaskStatus } from 'app/TaskManager/state'
 
-type Props = {
-  readonly children: React.ReactNode
-  readonly name: string
+export type TaskProps = {
+  readonly id: string
   readonly icon: string
   readonly index: number
+  readonly status: TaskStatus
+}
+
+type Props = TaskProps & {
+  readonly children: React.ReactNode
+  readonly title: string
 }
 
 type Coords = {
@@ -12,10 +19,18 @@ type Coords = {
   y: number
 }
 
-const Window: React.FC<Props> = ({ children, name, index, icon }) => {
+const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) => {
+  const { dispatch } = React.useContext(TaskManagerContext)
   const [position, setPosition] = React.useState<Coords>({ x: 0, y: 0 })
   const [anchor, setAnchor] = React.useState<Coords>({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = React.useState<boolean>(false)
+
+  const closeWindowTask = React.useCallback(() => {
+    dispatch({
+      type: 'close_task',
+      payload: id
+    })
+  }, [dispatch, id])
 
   const onMouseDown: React.MouseEventHandler<HTMLDivElement> = e => {
     setIsDragging(true)
@@ -37,16 +52,35 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
     })
   }
 
+  const focus = React.useCallback(() => {
+    if (status === TaskStatus.Focus) {
+      return
+    }
+
+    dispatch({ type: 'focus_task', payload: id })
+  }, [dispatch, status, id])
+
+  const reduce = React.useCallback(() => {
+    if (status === TaskStatus.Unfocus || status === TaskStatus.Reduced) {
+      return
+    }
+
+    dispatch({
+      type: 'reduce_task',
+      payload: id
+    })
+  }, [dispatch, status, id])
+
   return (
     <div
+      onClick={focus}
       className={`
-        flex
+        ${status === TaskStatus.Reduced ? 'hidden pointer-events-none' : 'flex'}
         flex-col
         flex-nowrap
         absolute
         left-[5vw]
         top-[10vh]
-        z-[${(index * 100).toString()}]
         w-0
         h-0
         m-0
@@ -58,7 +92,11 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
         bg-win-95-gray
         min-h-[80vh]
         min-w-[50vw]`}
-      style={{ outline: '1px solid #dedede', transform: `translate(${position.x}px, ${position.y}px)` }}
+      style={{
+        outline: '1px solid #dedede',
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        zIndex: (index * 100)
+      }}
     >
       <div
         className={`
@@ -67,23 +105,23 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
           justify-between
           items-center
           w-auto
-          z-[${(index * 100).toString()}]
           m-[2px]
           p-[2px]
           cursor-move
-          bg-win-95-blue`}
+          ${status === TaskStatus.Focus ? 'bg-win-95-blue' : 'bg-win-95-dark-gray'}`}
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseMove={onMouseMove}
+        style={{ zIndex: (index * 100) }}
       >
         <div className='flex flex-row items-center text-[white] text-sm font-medium ml-1 p-0'>
           <img alt='icon' src={icon} width={15} height={15} className='mb-0 mr-1' />
-          <b>{name}</b>
+          <b>{title}</b>
         </div>
         <div className='flex flex-row items-center justify-between'>
           <div
             role='button'
-            onClick={() => {}}
+            onClick={reduce}
             className='
               flex
               text-sm
@@ -100,9 +138,7 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
               active:shadow-none
               active:bg-win-95-silver'
           >
-            <span className='text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]'>
-              <b>_</b>
-            </span>
+            <span className='text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]'></span>
           </div>
           <div
             role='button'
@@ -127,7 +163,8 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
           </div>
           <div
             role='button'
-            onClick={() => {}}
+            title='Close'
+            onClick={closeWindowTask}
             className='
               flex
               text-sm
