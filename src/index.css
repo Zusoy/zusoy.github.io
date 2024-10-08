@@ -12,12 +12,20 @@ body {
   filter: grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(400%) contrast(.9);
 }
 
+.win-95-button:active {
+  background: repeating-conic-gradient(#bdbebd 0,#bdbebd 25%,#fff 0,#fff 50%) 50% /2px 2px;
+  border-color: #000 #fafafa #fafafa #000;
+  border-style: solid;
+  border-width: 1.5px;
+  box-shadow: none;
+}
+
 .win-95-shadow {
   box-shadow: 1.5px 1.5px #000;
 }
 
 .win-95-border {
-  @apply border-solid border-[1px] border-l-[#fafafa] border-t-[#fafafa] border-r-[#5a5a5a] border-b-[#5a5a5a];
+  @apply border-solid border-[1.5px] border-l-[#fafafa] border-t-[#fafafa] border-r-[#5a5a5a] border-b-[#5a5a5a];
 }
 
 .win-95-border-active {
