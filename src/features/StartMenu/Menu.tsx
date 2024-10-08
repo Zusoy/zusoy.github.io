@@ -1,13 +1,31 @@
 import React from 'react'
 import MenuItem from 'features/StartMenu/MenuItem'
+import { TaskManagerContext } from 'app/TaskManager'
 
 type Props = {
   readonly opened: boolean
+  readonly onClose: () => void
 }
 
-const Menu: React.FC<Props> = ({ opened }) =>
-  <div
-    className={`
+const Menu: React.FC<Props> = ({ opened, onClose }) => {
+  const { dispatch } = React.useContext(TaskManagerContext)
+
+  const launchTask = React.useCallback((tag: string, icon: string) => {
+    dispatch({
+      type: 'new_task',
+      payload: {
+        id: Date.now().toString(),
+        icon,
+        tag
+      }
+    })
+
+    onClose()
+  }, [dispatch, onClose])
+
+  return (
+    <div
+      className={`
       ${opened ? 'flex' : 'hidden'}
       absolute
       transform
@@ -28,14 +46,20 @@ const Menu: React.FC<Props> = ({ opened }) =>
       border-r-[1.5px]
       border-b-[1.5px]
       border-l-[2px]`}
-    style={{ outline: '1px solid #dedede' }}
-  >
-    <div className='items-end bg-win-95-dark-gray flex h-full w-[25px]'>
-      <img className='w-full border-none' src='/assets/sidebar.png' />
+      style={{ outline: '1px solid #dedede' }}
+    >
+      <div className='items-end bg-win-95-dark-gray flex h-full w-[25px]'>
+        <img className='w-full border-none' src='/assets/sidebar.png' />
+      </div>
+      <div className='flex-grow'>
+        <MenuItem
+          label='Resume'
+          img='/assets/icons/resume.png'
+          onClick={() => launchTask('resume', '/assets/icons/resume.png')}
+        />
+      </div>
     </div>
-    <div className='flex-grow'>
-      <MenuItem label='Resume' img='/assets/icons/resume.png' />
-    </div>
-  </div>
+  )
+}
 
 export default Menu
