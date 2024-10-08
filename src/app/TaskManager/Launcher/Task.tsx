@@ -1,21 +1,20 @@
 import React from 'react'
 import tasks from 'app/TaskManager/tasks'
+import { TaskProps } from 'features/Window'
 
-type Props = {
-  readonly taskId: string
-  readonly taskIcon: string
-  readonly taskIndex: number
-  readonly taskTag: string
+type Props = TaskProps & {
+  tag: string
 }
 
-const Task: React.FC<Props> = ({ taskId, taskIndex, taskTag, taskIcon }) => {
-  const TaskWindow = tasks[taskTag]
+const Task: React.FC<Props> = ({ id, index, icon, status, tag }) => {
+  const TaskWindow = tasks[tag]
 
   return (
     <TaskWindow
-      id={taskId}
-      icon={taskIcon}
-      index={taskIndex}
+      id={id}
+      icon={icon}
+      index={index}
+      status={status}
     />
   )
 }

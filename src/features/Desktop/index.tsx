@@ -18,7 +18,7 @@ const Desktop: React.FC = () => {
   }, [dispatch])
 
   return (
-    <div className='relative w-full h-[calc(100vh-2.5rem)] z-[999]'>
+    <div className='relative w-full h-[calc(100vh-2.5rem)] z-[99]'>
       <Launcher />
       <nav className='flex flex-col flex-wrap mt-2 w-0 h-full'>
         <Shortcut

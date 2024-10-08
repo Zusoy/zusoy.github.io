@@ -34,7 +34,7 @@ const Menu: React.FC<Props> = ({ opened }) =>
       <img className='w-full border-none' src='/assets/sidebar.png' />
     </div>
     <div className='flex-grow'>
-      <MenuItem label='Résumé' img='/assets/icons/resume.png' />
+      <MenuItem label='Resume' img='/assets/icons/resume.png' />
     </div>
   </div>
 

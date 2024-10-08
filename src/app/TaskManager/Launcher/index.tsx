@@ -7,13 +7,14 @@ const Launcher: React.FC = () => {
 
   return (
     <React.Fragment>
-      {state.tasks.map(({ tag, id, index, icon }) => (
+      {state.tasks.map(({ tag, id, index, icon, status }) => (
         <Task
           key={id}
-          taskId={id}
-          taskIndex={index}
-          taskTag={tag}
-          taskIcon={icon}
+          id={id}
+          index={index}
+          tag={tag}
+          icon={icon}
+          status={status}
         />
       ))}
     </React.Fragment>

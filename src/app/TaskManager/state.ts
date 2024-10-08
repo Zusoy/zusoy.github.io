@@ -39,6 +39,18 @@ export class CloseTaskAction implements ActionWithPayload<Task['id']> {
   constructor (public readonly payload: Task['id']) {}
 }
 
+export class FocusTaskAction implements ActionWithPayload<Task['id']> {
+  readonly type = 'focus_task'
+  constructor (public readonly payload: Task['id']) {}
+}
+
+export class ReduceTaskAction implements ActionWithPayload<Task['id']> {
+  readonly type = 'reduce_task'
+  constructor (public readonly payload: Task['id']) {}
+}
+
 export type Actions =
   NewTaskAction |
-  CloseTaskAction
+  CloseTaskAction |
+  FocusTaskAction |
+  ReduceTaskAction
