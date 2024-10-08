@@ -1,10 +1,15 @@
 import React from 'react'
+import { TaskManagerContext } from 'app/TaskManager'
 
-type Props = {
-  readonly children: React.ReactNode
-  readonly name: string
+export type TaskProps = {
+  readonly id: string
   readonly icon: string
   readonly index: number
+}
+
+type Props = TaskProps & {
+  readonly children: React.ReactNode
+  readonly title: string
 }
 
 type Coords = {
@@ -12,10 +17,18 @@ type Coords = {
   y: number
 }
 
-const Window: React.FC<Props> = ({ children, name, index, icon }) => {
+const Window: React.FC<Props> = ({ id, index, children, title, icon }) => {
+  const { dispatch } = React.useContext(TaskManagerContext)
   const [position, setPosition] = React.useState<Coords>({ x: 0, y: 0 })
   const [anchor, setAnchor] = React.useState<Coords>({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = React.useState<boolean>(false)
+
+  const closeWindowTask = React.useCallback(() => {
+    dispatch({
+      type: 'close_task',
+      payload: id
+    })
+  }, [dispatch, id])
 
   const onMouseDown: React.MouseEventHandler<HTMLDivElement> = e => {
     setIsDragging(true)
@@ -78,7 +91,7 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
       >
         <div className='flex flex-row items-center text-[white] text-sm font-medium ml-1 p-0'>
           <img alt='icon' src={icon} width={15} height={15} className='mb-0 mr-1' />
-          <b>{name}</b>
+          <b>{title}</b>
         </div>
         <div className='flex flex-row items-center justify-between'>
           <div
@@ -100,9 +113,7 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
               active:shadow-none
               active:bg-win-95-silver'
           >
-            <span className='text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]'>
-              <b>_</b>
-            </span>
+            <span className='text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]'></span>
           </div>
           <div
             role='button'
@@ -127,7 +138,7 @@ const Window: React.FC<Props> = ({ children, name, index, icon }) => {
           </div>
           <div
             role='button'
-            onClick={() => {}}
+            onClick={closeWindowTask}
             className='
               flex
               text-sm
