@@ -39,6 +39,14 @@ const Desktop: React.FC = () => {
           onClick={() => setActiveShortcut('resume')}
           onLaunch={launchTask}
         />
+        <Shortcut
+          label='Maze'
+          icon='/assets/icons/file.png'
+          taskTag='maze'
+          active={activeShortcut === 'maze'}
+          onClick={() => setActiveShortcut('maze')}
+          onLaunch={launchTask}
+        />
       </nav>
     </div>
   )
