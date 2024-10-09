@@ -1,4 +1,4 @@
-# GRG-DRP 95
+# Zusoy
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![License][license-shield]][license-url]
 
@@ -28,14 +28,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-GRG-DRP-95 (from my name Grégoire Drapeau) is my portfolio website.
+Welcome to my portfolio website.
 From here, you can see my projects, my motivation and my contacts :)
 The website is inspired by win-95 OS design.
 
 <!-- BUILT WITH -->
 ### Built With
 
-GRG-DRP-95 is built with :
+Built with :
 
 * [![React][React]][React-url]
 * [![Vite][Vite]][Vite-url]
@@ -48,14 +48,15 @@ The portfolio contains content about me but as well some features inspired by OS
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/Zusoy/grgdrp-95](https://github.com/Zusoy/grgdrp-95)
+- Access Link: [https://zusoy.github.io](https://zusoy.github.io/)
+- Project Link: [https://github.com/Zusoy/zusoy.github.io](https://github.com/Zusoy/zusoy.github.io)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0A66C2
 [linkedin-url]: https://www.linkedin.com/in/gregoire-drapeau/
 [license-shield]: https://img.shields.io/github/license/zusoy/chatterer.svg?style=for-the-badge
-[license-url]: https://github.com/Zusoy/grgdrp-95/blob/master/LICENSE.txt
+[license-url]: https://github.com/Zusoy/zusoy.github.io/blob/master/LICENSE.txt
 [React]: https://img.shields.io/badge/React-3998B6?style=for-the-badge&logo=react&logoColor=white
 [React-url]: https://react.dev/
 [Vite]: https://img.shields.io/badge/Vite-BA38FF?style=for-the-badge&logo=vite&logoColor=FFD62C
