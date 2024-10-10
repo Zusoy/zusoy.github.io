@@ -20,7 +20,7 @@ const Desktop: React.FC = () => {
   }, [dispatch])
 
   return (
-    <div className='relative w-full h-[calc(100vh-2.5rem)] z-[99]'>
+    <div id='desktop' className='relative w-full h-[calc(100vh-2.5rem)] z-[99]'>
       <Launcher />
       <nav className='flex flex-col flex-wrap mt-2 w-0 h-full'>
         <Shortcut
@@ -40,7 +40,7 @@ const Desktop: React.FC = () => {
           onLaunch={launchTask}
         />
         <Shortcut
-          label='Maze'
+          label='Maze 3D'
           icon='/assets/icons/file.png'
           taskTag='maze'
           active={activeShortcut === 'maze'}

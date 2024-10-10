@@ -19,7 +19,7 @@ const Maze: React.FC<TaskProps> = ({ id, index, icon, status }) => {
         <React.Suspense fallback='Loading'>
           <KeyboardControls map={map}>
             <Canvas shadows camera={{ fov: 45 }}>
-              <Scene />
+              <Scene taskId={id} />
             </Canvas>
           </KeyboardControls>
         </React.Suspense>

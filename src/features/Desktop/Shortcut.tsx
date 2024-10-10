@@ -18,7 +18,12 @@ const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, ac
   )
 
   return (
-    <li className='list-none' onClick={onClick} onDoubleClick={execute}>
+    <li
+      className='list-none'
+      onClick={onClick}
+      onDoubleClick={execute}
+      onTouchStart={execute}
+    >
       <button type='button' className='flex flex-col items-center text-center text-[black] m-4 w-2/3'>
         <img
           alt='icon'

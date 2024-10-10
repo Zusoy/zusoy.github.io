@@ -9,7 +9,7 @@ const Roof: React.FC = () => {
   map.repeat.set(100, 100)
 
   return (
-    <mesh position={[0, 1, 0]}>
+    <mesh position={[0, 1, 0]} userData={{ type: 'roof' }}>
       <boxGeometry args={[100, 1, 100]} />
       <meshBasicMaterial map={map} />
     </mesh>

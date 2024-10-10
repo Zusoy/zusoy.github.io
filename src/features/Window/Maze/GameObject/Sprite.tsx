@@ -4,12 +4,15 @@ import { useFrame } from '@react-three/fiber'
 import { Mesh } from 'three'
 
 type PositionTuple = [x: number, y: number, z: number]
+type SpriteType = 'start'|'finish'
+
 type Props = {
   readonly position: PositionTuple
   readonly src: string
+  readonly type: SpriteType
 }
 
-const Sprite: React.FC<Props> = ({ src, position }) => {
+const Sprite: React.FC<Props> = ({ src, position, type }) => {
   const transform = React.useRef<Mesh>(null!)
 
   useFrame(state => {
@@ -22,6 +25,7 @@ const Sprite: React.FC<Props> = ({ src, position }) => {
       opacity={1}
       position={position}
       ref={transform}
+      userData={{ type: 'sprite', sprite: type }}
       transparent
     />
   )
