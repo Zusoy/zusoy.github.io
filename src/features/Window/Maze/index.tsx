@@ -15,6 +15,9 @@ const Maze: React.FC<TaskProps> = ({ id, index, icon, status }) => {
 
   return (
     <Window id={id} index={index} icon={icon} status={status} title='Maze'>
+      <div className='win-95-border win-95-shadow p-4 m-2'>
+        <p>Move with arrows/WASD/ZQSD to solve the maze !</p>
+      </div>
       <div className='w-full h-full'>
         <React.Suspense fallback='Loading'>
           <KeyboardControls map={map}>
