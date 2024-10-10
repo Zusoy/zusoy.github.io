@@ -5,12 +5,28 @@ import Wall from 'features/Window/Maze/GameObject/Wall'
 import Player from 'features/Window/Maze/GameObject/Player'
 import Sprite from 'features/Window/Maze/GameObject/Sprite'
 import type { MazeGrid } from 'features/Window/Maze/types'
+import { TaskManagerContext } from 'app/TaskManager'
 
 type Props = {
   readonly grid: MazeGrid
+  readonly taskId: string
 }
 
-const Maze: React.FC<Props> = ({ grid }) => {
+const Maze: React.FC<Props> = ({ grid, taskId }) => {
+  const { dispatch } = React.useContext(TaskManagerContext)
+
+  const closeMazeTask = React.useCallback(() => {
+    window.open(
+      'https://www.linkedin.com/in/gregoire-drapeau/',
+      '_blank'
+    )
+
+    dispatch({
+      type: 'close_task',
+      payload: taskId
+    })
+  }, [dispatch, taskId])
+
   return (
     <React.Fragment>
       <Roof />
@@ -30,6 +46,7 @@ const Maze: React.FC<Props> = ({ grid }) => {
               <Player
                 key={`${rowIndex}_${colIndex}_${cell}`}
                 position={[colIndex, 0, rowIndex]}
+                onMazeFinish={closeMazeTask}
               />
             )
           }
@@ -40,6 +57,7 @@ const Maze: React.FC<Props> = ({ grid }) => {
                 key={`${rowIndex}_${colIndex}_${cell}`}
                 position={[colIndex, 0, rowIndex]}
                 src='/assets/maze/start.png'
+                type='start'
               />
             )
           }
@@ -50,6 +68,7 @@ const Maze: React.FC<Props> = ({ grid }) => {
                 key={`${rowIndex}_${colIndex}_${cell}`}
                 position={[colIndex, 0, rowIndex]}
                 src='/assets/img/me.jpg'
+                type='finish'
               />
             )
           }

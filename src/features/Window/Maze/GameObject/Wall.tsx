@@ -8,7 +8,7 @@ const Wall: React.FC<Props> = props => {
   const map = useLoader(TextureLoader, '/assets/maze/wall.bmp')
 
   return (
-    <mesh {...props}>
+    <mesh {...props} userData={{ type: 'wall' }}>
       <boxGeometry args={[1, 1, 1]} />
       <meshBasicMaterial map={map} />
     </mesh>

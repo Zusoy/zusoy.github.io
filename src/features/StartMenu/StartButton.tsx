@@ -1,12 +1,12 @@
 import React from 'react'
 
 type Props = {
-  readonly onClick: React.MouseEventHandler<HTMLDivElement>
+  readonly onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
 const StartButton: React.FC<Props> = ({ onClick }) =>
-  <div
-    role='button'
+  <button
+    type='button'
     className='
       w-16
       h-6
@@ -25,8 +25,8 @@ const StartButton: React.FC<Props> = ({ onClick }) =>
   >
     <div className='flex items-center justify-center'>
       <img src='assets/win95.png' className='border-none' width={18} height={18} />
-      <button className='pl-[3px] text-[0.9rem] font-bold bg-none'>Start</button>
+      <span className='pl-[3px] text-[0.9rem] font-bold bg-none'>Start</span>
     </div>
-  </div>
+  </button>
 
 export default StartButton

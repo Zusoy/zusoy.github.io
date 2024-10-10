@@ -24,6 +24,7 @@ const Taskbar: React.FC = () => {
           <div key={task.id}>
             <button
               onClick={() => focusTask(task.id)}
+              onTouchStart={() => focusTask(task.id)}
               className={`
                 win-95-button
                 ${task.status === TaskStatus.Focus ? 'win-95-button-active win-95-border-active' : ''}

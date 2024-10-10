@@ -1,6 +1,7 @@
 import React from 'react'
 import { TaskManagerContext } from 'app/TaskManager'
 import { TaskStatus } from 'app/TaskManager/state'
+import interact from 'interactjs'
 
 export type TaskProps = {
   readonly id: string
@@ -22,8 +23,6 @@ type Coords = {
 const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) => {
   const { dispatch } = React.useContext(TaskManagerContext)
   const [position, setPosition] = React.useState<Coords>({ x: 0, y: 0 })
-  const [anchor, setAnchor] = React.useState<Coords>({ x: 0, y: 0 })
-  const [isDragging, setIsDragging] = React.useState<boolean>(false)
 
   const closeWindowTask = React.useCallback(() => {
     dispatch({
@@ -31,26 +30,6 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
       payload: id
     })
   }, [dispatch, id])
-
-  const onMouseDown: React.MouseEventHandler<HTMLDivElement> = e => {
-    setIsDragging(true)
-    setAnchor({ x: e.clientX - position.x, y: e.clientY - position.y  })
-  }
-
-  const onMouseUp: React.MouseEventHandler<HTMLDivElement> = () => {
-    setIsDragging(false)
-  }
-
-  const onMouseMove: React.MouseEventHandler<HTMLDivElement> = e => {
-    if (!isDragging) {
-      return
-    }
-
-    setPosition({
-      x: e.clientX - anchor.x,
-      y: e.clientY - anchor.y
-    })
-  }
 
   const focus = React.useCallback(() => {
     if (status === TaskStatus.Focus) {
@@ -71,9 +50,39 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
     })
   }, [dispatch, status, id])
 
+  React.useEffect(() => {
+    const interaction = interact(`#window-${id}`)
+
+    interaction.draggable({
+      listeners: {
+        start () {
+          focus()
+        },
+        move (event) {
+          setPosition(position => ({
+            x: position.x += event.dx,
+            y: position.y += event.dy
+          }))
+        }
+      },
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: '#desktop',
+          endOnly: true
+        })
+      ],
+      allowFrom: `#win-bar-${id}`
+    })
+
+    return () => {
+      interaction.off('draggable')
+    }
+  }, [id, focus, status])
+
   return (
     <div
       onClick={focus}
+      id={`window-${id}`}
       className={`
         ${status === TaskStatus.Reduced ? 'hidden pointer-events-none' : 'flex'}
         flex-col
@@ -90,8 +99,10 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
         win-95-shadow
         win-95-border
         bg-win-95-gray
+        min-w-[50vw]
         min-h-[80vh]
-        min-w-[50vw]`}
+        max-sm:min-w-[100vw]
+        max-sm:min-h-[70vh]`}
       style={{
         outline: '1px solid #dedede',
         transform: `translate(${position.x}px, ${position.y}px)`,
@@ -99,6 +110,7 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
       }}
     >
       <div
+        id={`win-bar-${id}`}
         className={`
           flex
           flex-row
@@ -107,11 +119,10 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
           w-auto
           m-[2px]
           p-[2px]
+          touch-none
+          select-none
           cursor-move
           ${status === TaskStatus.Focus ? 'bg-win-95-blue' : 'bg-win-95-dark-gray'}`}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onMouseMove={onMouseMove}
         style={{ zIndex: (index * 100) }}
       >
         <div className='flex flex-row items-center text-[white] text-sm font-medium ml-1 p-0'>
