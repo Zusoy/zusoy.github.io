@@ -23,6 +23,7 @@ const Biography: React.FC<TaskProps> = ({ id, index, icon, status }) => {
         <section className='flex flex-col gap-1 w-full items-center justify-center'>
           <h1 className='text-2xl underline'>Grégoire Drapeau</h1>
           <Button
+            type='button'
             label='Resume'
             icon='/assets/icons/resume.png'
             onClick={openResumeWindow}

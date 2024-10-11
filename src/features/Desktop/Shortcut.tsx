@@ -9,9 +9,10 @@ type Props = {
   readonly active: boolean
   readonly onClick: React.MouseEventHandler<HTMLLIElement>
   readonly onLaunch: OnTaskLaunch
+  readonly desktopOnly?: boolean
 }
 
-const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, active }) => {
+const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, active, desktopOnly = false }) => {
   const execute = React.useCallback(
     () => onLaunch(taskTag, icon),
     [onLaunch, taskTag, icon]
@@ -19,7 +20,7 @@ const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, ac
 
   return (
     <li
-      className='list-none'
+      className={`list-none ${desktopOnly ? 'max-sm:hidden' : ''}`}
       onClick={onClick}
       onDoubleClick={execute}
       onTouchStart={execute}

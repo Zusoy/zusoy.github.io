@@ -72,6 +72,11 @@ const Menu: React.FC<Props> = ({ opened, onClose }) => {
           img='/assets/img/socials/x.webp'
           href='https://x.com/gregoire_drp'
         />
+        <MenuItem
+          label='Contact me'
+          img='/assets/icons/mail.png'
+          onClick={() => launchTask('contact', '/assets/icons/mail.png')}
+        />
       </div>
     </div>
   )
