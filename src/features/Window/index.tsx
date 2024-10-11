@@ -101,7 +101,7 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
         bg-win-95-gray
         min-w-[50vw]
         min-h-[80vh]
-        max-sm:min-w-[100vw]
+        max-sm:min-w-[80vw]
         max-sm:min-h-[70vh]`}
       style={{
         outline: '1px solid #dedede',

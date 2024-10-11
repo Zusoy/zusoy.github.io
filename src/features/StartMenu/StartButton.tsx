@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-  readonly onClick: React.MouseEventHandler<HTMLButtonElement>
+  readonly onClick: () => void
 }
 
 const StartButton: React.FC<Props> = ({ onClick }) =>
@@ -22,6 +22,7 @@ const StartButton: React.FC<Props> = ({ onClick }) =>
       active:win-95-border-active
       active:shadow-none'
     onClick={onClick}
+    onTouchStart={onClick}
   >
     <div className='flex items-center justify-center'>
       <img src='assets/win95.png' className='border-none' width={18} height={18} />
