@@ -8,7 +8,6 @@ import Window, { type TaskProps } from 'features/Window'
 const Maze: React.FC<TaskProps> = ({ id, index, icon, status }) => {
   const map = React.useMemo<KeyboardControlsEntry<MazeControls>[]>(() => [
     { name: MazeControls.forward, keys: ['ArrowUp', 'KeyW'] },
-    { name: MazeControls.backward, keys: ['ArrowDown', 'KeyS'] },
     { name: MazeControls.left, keys: ['ArrowLeft', 'KeyA'] },
     { name: MazeControls.right, keys: ['ArrowRight', 'KeyD'] }
   ], [])

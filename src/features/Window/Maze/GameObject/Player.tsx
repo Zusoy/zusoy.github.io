@@ -41,7 +41,7 @@ const Player: React.FC<Props> = ({ position, onMazeFinish }) => {
       return
     }
 
-    const { forward, backward, right, left } = get()
+    const { forward, right, left } = get()
 
     if (left) {
       transform.current.rotation.y += 0.05
@@ -53,14 +53,6 @@ const Player: React.FC<Props> = ({ position, onMazeFinish }) => {
 
     if (forward && !collisions.length) {
       transform.current.position.sub(
-        transform.current
-          .getWorldDirection(velocity)
-          .multiplyScalar(SPEED)
-      )
-    }
-
-    if (backward) {
-      transform.current.position.add(
         transform.current
           .getWorldDirection(velocity)
           .multiplyScalar(SPEED)
