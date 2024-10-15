@@ -1,10 +1,10 @@
 import React from 'react'
-import Roof from 'features/Window/Maze/GameObject/Roof'
-import Floor from 'features/Window/Maze/GameObject/Floor'
-import Wall from 'features/Window/Maze/GameObject/Wall'
-import Player from 'features/Window/Maze/GameObject/Player'
-import Sprite from 'features/Window/Maze/GameObject/Sprite'
-import type { MazeGrid } from 'features/Window/Maze/types'
+import Roof from 'features/Maze/GameObject/Roof'
+import Floor from 'features/Maze/GameObject/Floor'
+import Wall from 'features/Maze/GameObject/Wall'
+import Player from 'features/Maze/GameObject/Player'
+import Sprite from 'features/Maze/GameObject/Sprite'
+import type { MazeGrid } from 'features/Maze/types'
 import { TaskManagerContext } from 'app/TaskManager'
 
 type Props = {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber'
 import { KeyboardControls, KeyboardControlsEntry } from '@react-three/drei'
-import { MazeControls } from 'features/Window/Maze/input'
-import Scene from 'features/Window/Maze/Scene'
+import { MazeControls } from 'features/Maze/input'
+import Scene from 'features/Maze/Scene'
 import Window, { type TaskProps } from 'features/Window'
 
 const Maze: React.FC<TaskProps> = ({ id, index, icon, status }) => {

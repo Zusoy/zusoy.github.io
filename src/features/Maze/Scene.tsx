@@ -1,7 +1,7 @@
 import React from 'react'
-import Wall from 'features/Window/Maze/GameObject/Wall'
-import Maze from 'features/Window/Maze/GameObject/Maze'
-import { mazes } from 'features/Window/Maze/types'
+import Wall from 'features/Maze/GameObject/Wall'
+import Maze from 'features/Maze/GameObject/Maze'
+import { mazes } from 'features/Maze/types'
 
 type Props = {
   readonly taskId: string

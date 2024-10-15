@@ -1,5 +1,5 @@
 import React from 'react'
-import { MazeControls } from 'features/Window/Maze/input'
+import { MazeControls } from 'features/Maze/input'
 import { useKeyboardControls } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { Mesh, Raycaster, Vector3 } from 'three'
