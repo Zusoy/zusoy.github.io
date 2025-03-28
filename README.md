@@ -19,6 +19,7 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#features">Features</a></li>
+        <li><a href="#install">Install</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -44,6 +45,32 @@ Built with :
 ### Features
 
 The portfolio contains content about me but as well some features inspired by OS WIN-95
+
+## Install
+
+To install the project locally you'll need `docker` and `docker-compose` installed.
+
+Then follow those steps :
+
+- Clone the repository
+
+```sh
+git clone git@github.com:Zusoy/zusoy.github.io.git
+```
+
+- Build the project
+
+```sh
+make build
+```
+
+- Start the project
+
+```sh
+make start
+```
+
+Then you can access to the app at [http://localhost:2000](http://localhost:2000)
 
 <!-- CONTACT -->
 ## Contact

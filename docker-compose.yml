@@ -1,0 +1,17 @@
+---
+version: '3.8'
+
+services:
+  node:
+    stdin_open: true
+    tty: true
+    environment:
+      - NODE_ENV=development
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 2000:2000
+    command: 'npm run dev'
