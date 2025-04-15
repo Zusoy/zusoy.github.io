@@ -1,15 +1,11 @@
 import React from 'react'
+import DesktopShortcut, { type ShortcutProps } from 'widgets/Desktop/Shortcut'
 
 type OnTaskLaunch = (tag: string, icon: string) => void
 
-type Props = {
-  readonly label: string
-  readonly icon: string
+type Props = ShortcutProps & {
   readonly taskTag: string
-  readonly active: boolean
-  readonly onClick: React.MouseEventHandler<HTMLLIElement>
   readonly onLaunch: OnTaskLaunch
-  readonly desktopOnly?: boolean
 }
 
 const Shortcut: React.FC<Props> = ({
@@ -27,45 +23,15 @@ const Shortcut: React.FC<Props> = ({
   )
 
   return (
-    <li
-      className={`list-none ${desktopOnly ? 'max-sm:hidden' : ''}`}
+    <DesktopShortcut
+      label={label}
+      icon={icon}
+      active={active}
+      desktopOnly={desktopOnly}
       onClick={onClick}
       onDoubleClick={execute}
-      onTouchStart={execute}
-    >
-      <button
-        type="button"
-        className="flex flex-col items-center text-center text-[black] m-4 w-2/3"
-      >
-        <img
-          alt="icon"
-          src={icon}
-          width={30}
-          height={30}
-          className={`mb-1 border-none ${active ? 'win-95-shortcut-active' : ''}`}
-        />
-        <div
-          className={`
-            border-solid
-            border-0
-            border-win-95-light
-            box-border
-            ${active ? 'border-dotted' : ''}
-            ${active ? 'border-[1px]' : ''}
-            ${active ? 'border-win-95-yellow' : ''}`}
-        >
-          <p
-            className={`
-              text-[#fff]
-              text-sm
-              m-[1px]
-              ${active ? 'bg-win-95-blue' : ''}`}
-          >
-            {label}
-          </p>
-        </div>
-      </button>
-    </li>
+      onTouch={execute}
+    />
   )
 }
 

@@ -15,3 +15,17 @@ services:
     ports:
       - 2000:2000
     command: 'npm run dev'
+
+  storybook:
+    container_name: storybook
+    build:
+      context: .
+    ports:
+      - 6006:6006
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - BROWSER=true
+    command: 'npm run storybook'
