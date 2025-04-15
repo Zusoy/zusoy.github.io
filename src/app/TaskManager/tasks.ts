@@ -12,13 +12,13 @@ const processes: TaskProcess = {
   biography: Biography,
   resume: Resume,
   maze: Maze,
-  contact: Contact
+  contact: Contact,
 }
 
 export enum TaskStatus {
   Focus = 'focus',
   Unfocus = 'unfocus',
-  Reduced = 'reduced'
+  Reduced = 'reduced',
 }
 
 export interface Task<T extends Nullable<object> = null> {

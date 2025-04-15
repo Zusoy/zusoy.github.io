@@ -3,13 +3,13 @@ import { Actions, initialState, State } from 'app/TaskManager/state'
 import reducer from 'app/TaskManager/reducer'
 
 type Context = {
-  readonly dispatch: React.Dispatch<Actions>,
+  readonly dispatch: React.Dispatch<Actions>
   readonly state: State
 }
 
 export const TaskManagerContext = React.createContext<Context>({
   state: initialState,
-  dispatch: () => {}
+  dispatch: () => {},
 })
 
 const TaskManager: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -17,7 +17,7 @@ const TaskManager: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const contextValue = React.useMemo<Context>(
     () => ({ state, dispatch }),
-    [state, dispatch]
+    [state, dispatch],
   )
 
   return (

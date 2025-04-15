@@ -22,14 +22,21 @@ type Coords = {
   y: number
 }
 
-const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) => {
+const Window: React.FC<Props> = ({
+  id,
+  index,
+  children,
+  title,
+  icon,
+  status,
+}) => {
   const { dispatch } = React.useContext(TaskManagerContext)
   const [position, setPosition] = React.useState<Coords>({ x: 0, y: 0 })
 
   const closeWindowTask = React.useCallback(() => {
     dispatch({
       type: 'close_task',
-      payload: id
+      payload: id,
     })
   }, [dispatch, id])
 
@@ -48,7 +55,7 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
 
     dispatch({
       type: 'reduce_task',
-      payload: id
+      payload: id,
     })
   }, [dispatch, status, id])
 
@@ -57,23 +64,23 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
 
     interaction.draggable({
       listeners: {
-        start () {
+        start() {
           focus()
         },
-        move (event) {
-          setPosition(position => ({
-            x: position.x += event.dx,
-            y: position.y += event.dy
+        move(event) {
+          setPosition((position) => ({
+            x: (position.x += event.dx),
+            y: (position.y += event.dy),
           }))
-        }
+        },
       },
       modifiers: [
         interact.modifiers.restrictRect({
           restriction: '#desktop',
-          endOnly: true
-        })
+          endOnly: true,
+        }),
       ],
-      allowFrom: `#win-bar-${id}`
+      allowFrom: `#win-bar-${id}`,
     })
 
     return () => {
@@ -108,7 +115,7 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
       style={{
         outline: '1px solid #dedede',
         transform: `translate(${position.x}px, ${position.y}px)`,
-        zIndex: (index * 100)
+        zIndex: index * 100,
       }}
     >
       <div
@@ -125,17 +132,23 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
           select-none
           cursor-move
           ${status === TaskStatus.Focus ? 'bg-win-95-blue' : 'bg-win-95-dark-gray'}`}
-        style={{ zIndex: (index * 100) }}
+        style={{ zIndex: index * 100 }}
       >
-        <div className='flex flex-row items-center text-[white] text-sm font-medium ml-1 p-0'>
-          <img alt='icon' src={icon} width={15} height={15} className='mb-0 mr-1' />
+        <div className="flex flex-row items-center text-[white] text-sm font-medium ml-1 p-0">
+          <img
+            alt="icon"
+            src={icon}
+            width={15}
+            height={15}
+            className="mb-0 mr-1"
+          />
           <b>{title}</b>
         </div>
-        <div className='flex flex-row items-center justify-between'>
+        <div className="flex flex-row items-center justify-between">
           <div
-            role='button'
+            role="button"
             onClick={reduce}
-            className='
+            className="
               flex
               text-sm
               font-bold
@@ -149,14 +162,14 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
               ml-[2px]
               active:win-95-border-active
               active:shadow-none
-              active:bg-win-95-silver'
+              active:bg-win-95-silver"
           >
-            <span className='text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]'></span>
+            <span className="text-center h-[2px] w-[6px] bg-[black] mt-2 mr-[2px]"></span>
           </div>
           <div
-            role='button'
+            role="button"
             onClick={() => {}}
-            className='
+            className="
               flex
               text-sm
               font-bold
@@ -170,15 +183,15 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
               ml-[2px]
               active:win-95-border-active
               active:shadow-none
-              active:bg-win-95-silver'
+              active:bg-win-95-silver"
           >
             <b>❒</b>
           </div>
           <div
-            role='button'
-            title='Close'
+            role="button"
+            title="Close"
             onClick={closeWindowTask}
-            className='
+            className="
               flex
               text-sm
               font-bold
@@ -192,15 +205,13 @@ const Window: React.FC<Props> = ({ id, index, children, title, icon, status }) =
               ml-[2px]
               active:win-95-border-active
               active:shadow-none
-              active:bg-win-95-silver'
+              active:bg-win-95-silver"
           >
             <b>X</b>
           </div>
         </div>
       </div>
-      <div className='flex-grow overflow-x-hidden p-0'>
-        {children}
-      </div>
+      <div className="flex-grow overflow-x-hidden p-0">{children}</div>
     </div>
   )
 }

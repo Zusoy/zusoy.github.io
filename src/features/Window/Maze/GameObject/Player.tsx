@@ -22,19 +22,20 @@ const Player: React.FC<Props> = ({ position, onMazeFinish }) => {
     return ray
   }, [])
 
-  useFrame(state => {
+  useFrame((state) => {
     const direction = new Vector3(0, 0, -1)
     direction.applyQuaternion(transform.current.quaternion)
     raycaster.set(transform.current.position, direction)
     const intersects = raycaster.intersectObjects(state.scene.children)
 
-    const finish = intersects
-      .map(i => i.object)
-      .find(i => Object.values(i.userData).includes('finish')) || null
+    const finish =
+      intersects
+        .map((i) => i.object)
+        .find((i) => Object.values(i.userData).includes('finish')) || null
 
     const collisions = intersects
-      .map(i => i.object)
-      .filter(i => !Object.values(i.userData).includes('sprite'))
+      .map((i) => i.object)
+      .filter((i) => !Object.values(i.userData).includes('sprite'))
 
     if (null !== finish) {
       onMazeFinish()
@@ -53,9 +54,7 @@ const Player: React.FC<Props> = ({ position, onMazeFinish }) => {
 
     if (forward && !collisions.length) {
       transform.current.position.sub(
-        transform.current
-          .getWorldDirection(velocity)
-          .multiplyScalar(SPEED)
+        transform.current.getWorldDirection(velocity).multiplyScalar(SPEED),
       )
     }
 
