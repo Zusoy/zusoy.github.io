@@ -15,6 +15,7 @@ const Menu: React.FC<Props> = ({ opened, onClose }) => {
       type: 'new_task',
       payload: {
         id: Date.now().toString(),
+        context: null,
         icon,
         tag
       }

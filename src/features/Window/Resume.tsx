@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'widgets/Content/Link'
 import Window, { type TaskProps } from 'features/Window'
 
-const Resume: React.FC<TaskProps> = ({ id, index, icon, status }) => {
+const Resume: React.FC<TaskProps> = ({ id, index, icon, status, context }) => {
   return (
-    <Window index={index} id={id} title='Resume' icon={icon} status={status}>
+    <Window index={index} id={id} title='Resume' icon={icon} status={status} context={context}>
       <article className='flex flex-col flex-grow gap-6 w-full h-full p-2 justify-start'>
         <header className='flex flex-row items-center gap-2 flex-grow'>
           <Link

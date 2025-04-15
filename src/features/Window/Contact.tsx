@@ -4,9 +4,9 @@ import Textarea from 'widgets/Form/Textarea'
 import Button from 'widgets/Form/Button'
 import Window, { type TaskProps } from 'features/Window'
 
-const Contact: React.FC<TaskProps> = ({ id, index, status, icon }) => {
+const Contact: React.FC<TaskProps> = ({ id, index, status, icon, context }) => {
   return (
-    <Window id={id} index={index} status={status} icon={icon} title='Contact me'>
+    <Window id={id} index={index} status={status} icon={icon} title='Contact me' context={context}>
       <div className='flex grow w-full h-full'>
         <form
           method='POST'

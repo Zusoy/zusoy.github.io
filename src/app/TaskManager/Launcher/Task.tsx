@@ -6,7 +6,7 @@ type Props = TaskProps & {
   tag: string
 }
 
-const Task: React.FC<Props> = ({ id, index, icon, status, tag }) => {
+const Task: React.FC<Props> = ({ id, index, icon, status, tag, context }) => {
   const TaskWindow = tasks[tag]
 
   return (
@@ -15,6 +15,7 @@ const Task: React.FC<Props> = ({ id, index, icon, status, tag }) => {
       icon={icon}
       index={index}
       status={status}
+      context={context}
     />
   )
 }

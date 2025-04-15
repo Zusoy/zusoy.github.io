@@ -1,13 +1,15 @@
 import React from 'react'
 import { TaskManagerContext } from 'app/TaskManager'
-import { TaskStatus } from 'app/TaskManager/state'
+import { TaskStatus } from 'app/TaskManager/tasks'
 import interact from 'interactjs'
+import { Nullable } from 'utils'
 
-export type TaskProps = {
+export interface TaskProps<T extends Nullable<object> = null> {
   readonly id: string
   readonly icon: string
   readonly index: number
   readonly status: TaskStatus
+  readonly context: T
 }
 
 type Props = TaskProps & {
