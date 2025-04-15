@@ -4,7 +4,7 @@ import { TextureLoader } from 'three'
 
 type Props = JSX.IntrinsicElements['mesh']
 
-const Wall: React.FC<Props> = props => {
+const Wall: React.FC<Props> = (props) => {
   const map = useLoader(TextureLoader, '/assets/maze/wall.bmp')
 
   return (

@@ -10,7 +10,7 @@ const Floor: React.FC = () => {
 
   return (
     <mesh position={[0, -1, 0]} userData={{ type: 'floor' }}>
-      <boxGeometry args={[100, 1, 100]}/>
+      <boxGeometry args={[100, 1, 100]} />
       <meshBasicMaterial map={map} />
     </mesh>
   )

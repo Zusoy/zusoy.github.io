@@ -10,19 +10,22 @@ type Props = {
 const Menu: React.FC<Props> = ({ opened, onClose }) => {
   const { dispatch } = React.useContext(TaskManagerContext)
 
-  const launchTask = React.useCallback((tag: string, icon: string) => {
-    dispatch({
-      type: 'new_task',
-      payload: {
-        id: Date.now().toString(),
-        context: null,
-        icon,
-        tag
-      }
-    })
+  const launchTask = React.useCallback(
+    (tag: string, icon: string) => {
+      dispatch({
+        type: 'new_task',
+        payload: {
+          id: Date.now().toString(),
+          context: null,
+          icon,
+          tag,
+        },
+      })
 
-    onClose()
-  }, [dispatch, onClose])
+      onClose()
+    },
+    [dispatch, onClose],
+  )
 
   return (
     <div
@@ -49,33 +52,33 @@ const Menu: React.FC<Props> = ({ opened, onClose }) => {
       border-l-[2px]`}
       style={{ outline: '1px solid #dedede' }}
     >
-      <div className='items-end bg-win-95-dark-gray flex h-full w-[25px]'>
-        <img className='w-full border-none' src='/assets/sidebar.png' />
+      <div className="items-end bg-win-95-dark-gray flex h-full w-[25px]">
+        <img className="w-full border-none" src="/assets/sidebar.png" />
       </div>
-      <div className='flex-grow'>
+      <div className="flex-grow">
         <MenuItem
-          label='Resume'
-          img='/assets/icons/resume.png'
+          label="Resume"
+          img="/assets/icons/resume.png"
           onClick={() => launchTask('resume', '/assets/icons/resume.png')}
         />
         <LinkMenuItem
-          label='Github'
-          img='/assets/img/socials/github.webp'
-          href='https://github.com/Zusoy'
+          label="Github"
+          img="/assets/img/socials/github.webp"
+          href="https://github.com/Zusoy"
         />
         <LinkMenuItem
-          label='LinkedIn'
-          img='/assets/img/socials/linkedin.webp'
-          href='https://www.linkedin.com/in/gregoire-drapeau/'
+          label="LinkedIn"
+          img="/assets/img/socials/linkedin.webp"
+          href="https://www.linkedin.com/in/gregoire-drapeau/"
         />
         <LinkMenuItem
-          label='X'
-          img='/assets/img/socials/x.webp'
-          href='https://x.com/gregoire_drp'
+          label="X"
+          img="/assets/img/socials/x.webp"
+          href="https://x.com/gregoire_drp"
         />
         <MenuItem
-          label='Contact me'
-          img='/assets/icons/mail.png'
+          label="Contact me"
+          img="/assets/icons/mail.png"
           onClick={() => launchTask('contact', '/assets/icons/mail.png')}
         />
       </div>

@@ -16,14 +16,11 @@ const Maze: React.FC<Props> = ({ grid, taskId }) => {
   const { dispatch } = React.useContext(TaskManagerContext)
 
   const closeMazeTask = React.useCallback(() => {
-    window.open(
-      'https://www.linkedin.com/in/gregoire-drapeau/',
-      '_blank'
-    )
+    window.open('https://www.linkedin.com/in/gregoire-drapeau/', '_blank')
 
     dispatch({
       type: 'close_task',
-      payload: taskId
+      payload: taskId,
     })
   }, [dispatch, taskId])
 
@@ -56,8 +53,8 @@ const Maze: React.FC<Props> = ({ grid, taskId }) => {
               <Sprite
                 key={`${rowIndex}_${colIndex}_${cell}`}
                 position={[colIndex, 0, rowIndex]}
-                src='/assets/maze/start.png'
-                type='start'
+                src="/assets/maze/start.png"
+                type="start"
               />
             )
           }
@@ -67,14 +64,14 @@ const Maze: React.FC<Props> = ({ grid, taskId }) => {
               <Sprite
                 key={`${rowIndex}_${colIndex}_${cell}`}
                 position={[colIndex, 0, rowIndex]}
-                src='/assets/img/me.jpg'
-                type='finish'
+                src="/assets/img/me.jpg"
+                type="finish"
               />
             )
           }
 
           return null
-        })
+        }),
       )}
       <Floor />
     </React.Fragment>

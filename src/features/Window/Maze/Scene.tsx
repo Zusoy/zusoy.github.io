@@ -10,7 +10,7 @@ type Props = {
 const Scene: React.FC<Props> = ({ taskId }) => {
   const maze = React.useMemo(
     () => mazes[Math.floor(Math.random() * mazes.length)],
-    []
+    [],
   )
 
   return (

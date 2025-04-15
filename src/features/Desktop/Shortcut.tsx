@@ -12,10 +12,18 @@ type Props = {
   readonly desktopOnly?: boolean
 }
 
-const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, active, desktopOnly = false }) => {
+const Shortcut: React.FC<Props> = ({
+  label,
+  icon,
+  taskTag,
+  onClick,
+  onLaunch,
+  active,
+  desktopOnly = false,
+}) => {
   const execute = React.useCallback(
     () => onLaunch(taskTag, icon),
-    [onLaunch, taskTag, icon]
+    [onLaunch, taskTag, icon],
   )
 
   return (
@@ -25,9 +33,12 @@ const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, ac
       onDoubleClick={execute}
       onTouchStart={execute}
     >
-      <button type='button' className='flex flex-col items-center text-center text-[black] m-4 w-2/3'>
+      <button
+        type="button"
+        className="flex flex-col items-center text-center text-[black] m-4 w-2/3"
+      >
         <img
-          alt='icon'
+          alt="icon"
           src={icon}
           width={30}
           height={30}
@@ -40,8 +51,8 @@ const Shortcut: React.FC<Props> = ({ label, icon, taskTag, onClick, onLaunch, ac
             border-win-95-light
             box-border
             ${active ? 'border-dotted' : ''}
-            ${active ? 'border-[1px]' : '' }
-            ${active ? 'border-win-95-yellow' : '' }`}
+            ${active ? 'border-[1px]' : ''}
+            ${active ? 'border-win-95-yellow' : ''}`}
         >
           <p
             className={`

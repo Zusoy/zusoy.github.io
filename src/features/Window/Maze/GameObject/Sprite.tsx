@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { Mesh } from 'three'
 
 type PositionTuple = [x: number, y: number, z: number]
-type SpriteType = 'start'|'finish'
+type SpriteType = 'start' | 'finish'
 
 type Props = {
   readonly position: PositionTuple
@@ -15,7 +15,7 @@ type Props = {
 const Sprite: React.FC<Props> = ({ src, position, type }) => {
   const transform = React.useRef<Mesh>(null!)
 
-  useFrame(state => {
+  useFrame((state) => {
     transform.current.lookAt(state.camera.position)
   })
 

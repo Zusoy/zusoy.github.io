@@ -5,7 +5,7 @@ import Desktop from 'features/Desktop'
 
 const App: React.FC = () => {
   return (
-    <main className='flex flex-col w-full gap-0'>
+    <main className="flex flex-col w-full gap-0">
       <TaskManager>
         <Desktop />
         <StartMenu />
