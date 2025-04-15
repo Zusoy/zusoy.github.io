@@ -70,7 +70,10 @@ make build
 make start
 ```
 
-Then you can access to the app at [http://localhost:2000](http://localhost:2000)
+| Service     | URL                   |
+|-------------|-----------------------|
+| Application | http://localhost:2000 |
+| Storybook   | http://localhost:6006 |
 
 <!-- CONTACT -->
 ## Contact

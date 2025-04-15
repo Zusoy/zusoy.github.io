@@ -10,8 +10,6 @@ RUN npm install -g npm@11.3.0
 
 RUN npm i
 
-CMD ["npm", "run", "dev"]
-
 #########################################
 
 FROM dev as prod
