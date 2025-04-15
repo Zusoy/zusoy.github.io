@@ -3,18 +3,18 @@ import reducer from 'app/TaskManager/reducer'
 import {
   initialState,
   NewTaskAction,
-  TaskStatus,
   CloseTaskAction,
-  Task,
   type State
 } from 'app/TaskManager/state'
+import { TaskStatus, Task } from 'app/TaskManager/tasks'
 
 const getTaskMock = (id: string, status: TaskStatus, index: number): Task => ({
   id,
   status,
   index,
   tag: 'biography',
-  icon: '/icon.png'
+  icon: '/icon.png',
+  context: null
 })
 
 describe('TaskManager/reducer', () => {
@@ -23,7 +23,8 @@ describe('TaskManager/reducer', () => {
       const action = new NewTaskAction({
         id: '123',
         tag: 'biography',
-        icon: '/icon.png'
+        icon: '/icon.png',
+        context: null
       })
 
       expect(reducer(initialState, action)).toEqual({
@@ -32,6 +33,7 @@ describe('TaskManager/reducer', () => {
           id: '123',
           tag: 'biography',
           icon: '/icon.png',
+          context: null,
           index: 0,
           status: TaskStatus.Focus
         }]
@@ -50,15 +52,16 @@ describe('TaskManager/reducer', () => {
       const action = new NewTaskAction({
         id: '333',
         tag: 'biography',
-        icon: '/icon.png'
+        icon: '/icon.png',
+        context: null
       })
 
       expect(reducer(initial, action)).toEqual({
         ...initial,
         tasks: [
-          { id: '111', status: TaskStatus.Unfocus, icon: '/icon.png', index: 0, tag: 'biography' },
-          { id: '222', status: TaskStatus.Reduced, icon: '/icon.png', index: 1, tag: 'biography' },
-          { id: '333', status: TaskStatus.Focus, icon: '/icon.png', index: 2, tag: 'biography' }
+          { id: '111', status: TaskStatus.Unfocus, icon: '/icon.png', index: 0, tag: 'biography', context: null, },
+          { id: '222', status: TaskStatus.Reduced, icon: '/icon.png', index: 1, tag: 'biography', context: null, },
+          { id: '333', status: TaskStatus.Focus, icon: '/icon.png', index: 2, tag: 'biography', context: null, }
         ]
       })
     })

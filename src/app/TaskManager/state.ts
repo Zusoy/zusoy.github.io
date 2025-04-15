@@ -1,16 +1,4 @@
-export enum TaskStatus {
-  Focus = 'focus',
-  Unfocus = 'unfocus',
-  Reduced = 'reduced'
-}
-
-export type Task = {
-  id: string
-  tag: string
-  index: number
-  icon: string
-  status: TaskStatus
-}
+import type { Task } from 'app/TaskManager/tasks'
 
 export type State = {
   tasks: Task[]
@@ -28,7 +16,7 @@ export interface ActionWithPayload<T> extends Action {
   readonly payload: T
 }
 
-type NewTaskPayload = { id: string, tag: string, icon: string }
+type NewTaskPayload<T extends object|null = null> = { id: string, tag: string, icon: string, context: T }
 export class NewTaskAction implements ActionWithPayload<NewTaskPayload> {
   readonly type = 'new_task'
   constructor (public readonly payload: NewTaskPayload) {}

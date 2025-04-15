@@ -13,6 +13,7 @@ const Desktop: React.FC = () => {
       type: 'new_task',
       payload: {
         id: Date.now().toString(),
+        context: null,
         icon,
         tag
       }

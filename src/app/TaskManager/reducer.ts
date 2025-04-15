@@ -1,5 +1,6 @@
 import type { Reducer } from 'react'
-import { TaskStatus, type Actions, type State } from 'app/TaskManager/state'
+import { type Actions, type State } from 'app/TaskManager/state'
+import { TaskStatus } from 'app/TaskManager/tasks'
 
 const reducer: Reducer<State, Actions> = (state, action): State => {
   switch (action.type) {
@@ -16,6 +17,7 @@ const reducer: Reducer<State, Actions> = (state, action): State => {
           {
             id: action.payload.id,
             tag: action.payload.tag,
+            context: action.payload.context,
             icon: action.payload.icon,
             index: state.tasks.length,
             status: TaskStatus.Focus

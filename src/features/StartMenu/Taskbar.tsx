@@ -1,6 +1,6 @@
 import React from 'react'
 import { TaskManagerContext } from 'app/TaskManager'
-import { TaskStatus } from 'app/TaskManager/state'
+import { TaskStatus } from 'app/TaskManager/tasks'
 
 const Taskbar: React.FC = () => {
   const { state, dispatch } = React.useContext(TaskManagerContext)
